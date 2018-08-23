@@ -12,6 +12,7 @@ void InitMenuBox()
     cout << " 4. triangle field " << endl;
     cout << " 5. your mother field " << endl;
 }
+
 double circle_field(double a)
 {
     double result = PI * a * a;
@@ -58,6 +59,7 @@ double triagnle_field(double a,double b)
     cout << " the number is too big, buy a bigger monitor ";
 }
 */
+
 void InitDecysionMenu(int choice)
 {
     int a,b;
@@ -95,23 +97,23 @@ void InitDecysionMenu(int choice)
 
 int main()
 {
- int choice;
- char ch;
- do
- {
-    system(" cls ");
-    InitMenuBox();
-    cin >> choice;
-    InitDecysionMenu(choice);
-do
+int choice;
+char ch;
+    do
     {
-        cout << " Do you want to continue the program ?  (Y/N) ";
-        cin >> ch;
-    }
-while(ch != 'y' && ch != 'Y' && ch != 'n' && ch != 'N');
+        system(" cls ");
+        InitMenuBox();
+        cin >> choice;
+        InitDecysionMenu(choice);
+        do
+        {
+            cout << " Do you want to continue the program ?  (Y/N) ";
+            cin >> ch;
+        }
+        while(ch != 'y' && ch != 'Y' && ch != 'n' && ch != 'N');
 
- }
- while(ch == 'y' || ch == 'Y');
+    }
+    while(ch == 'y' || ch == 'Y');
 
     return 0;
 }
