@@ -1,7 +1,10 @@
 #include <iostream>
+#include <string>
 #define PI 3.14 // in this line I define what PI is
 using namespace std;
 // const double PI 3.14; this line is the same as the line
+
+
 void InitMenuBox()
 {
     cout << " Choice options : " << endl;
@@ -60,29 +63,45 @@ double triagnle_field(double a,double b)
 }
 */
 
+bool isRight(string error_msg)
+    {
+        if(cin.rdstate())
+        {
+            cin.clear();
+            cin.ignore(1024,'\n');
+            system("cls");
+            InitMenuBox();
+            cout<< error_msg;
+            return false;
+        }
+        return true;
+    }
+
 void InitDecysionMenu(int choice)
 {
+    system("cls");
+    InitMenuBox();
     int a,b;
     switch(choice)
     {
         case 1 :
             cout << " enter the radius of the circle " << endl;
-            cin >> a;
+            do {cin >> a;} while(!isRight("incorrect data, try again bro : "));
             circle_field(a);
             break;
         case 2 :
             cout << " enter side of the square " <<endl;
-            cin >> a;
+            do {cin >> a;} while(!isRight("incorrect data, try again bro : "));
             square_field(a);
             break;
         case 3 :
             cout << "enter sides of the rectangle " << endl;
-            cin >> a >> b;
+            do {cin >> a >> b;} while(!isRight("incorrect data, try again bro : "));
             rectangle_field(a,b);
             break;
         case 4 :
             cout << "enter side and hight of the triangle " << endl;
-            cin >> a >> b;
+            do {cin >> a >> b;} while(!isRight("incorrect data, try again bro : "));
             triagnle_field(a,b);
             break;
         case 5 :
@@ -103,17 +122,29 @@ char ch;
     {
         system(" cls ");
         InitMenuBox();
-        cin >> choice;
+        while(!(cin >> choice))
+        {
+
+            cin.clear();
+            cin.ignore(1024, '\n');
+            system("cls");
+            InitMenuBox();
+            cout << endl;
+            cout << "incorrect data" << endl;
+        }
+
         InitDecysionMenu(choice);
         do
         {
-            cout << " Do you want to continue the program ?  (Y/N) ";
+            cout << " Do you want to continue the program ?  (Y/N) " << endl;
             cin >> ch;
+            cin.ignore(1024, '\n');
         }
         while(ch != 'y' && ch != 'Y' && ch != 'n' && ch != 'N');
 
     }
     while(ch == 'y' || ch == 'Y');
 
+    system("exit");
     return 0;
 }
